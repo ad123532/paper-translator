@@ -3,25 +3,12 @@
   "name": "PaperTranslator - 文献阅读翻译助手",
   "version": "1.0.0",
   "description": "专注学术文献阅读的划词翻译插件：选词译词、选句译句，支持PDF与多翻译引擎，免费开源无广告。",
-  "default_locale": "zh_CN",
   "permissions": [
     "storage",
     "contextMenus",
     "activeTab"
   ],
   "host_permissions": [
-    "https://translate.googleapis.com/*",
-    "https://dict.youdao.com/*",
-    "https://api.deepl.com/*",
-    "https://api-free.deepl.com/*",
-    "https://api.openai.com/*",
-    "https://*.arxiv.org/*",
-    "https://*.nature.com/*",
-    "https://*.sciencedirect.com/*",
-    "https://*.springer.com/*",
-    "https://*.ieee.org/*",
-    "https://*.acm.org/*",
-    "https://*.wiley.com/*",
     "<all_urls>"
   ],
   "background": {
