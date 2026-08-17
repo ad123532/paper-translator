@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="popup.css">
+  <title>PaperTranslator</title>
+</head>
+<body>
+  <div class="popup-container">
+    <div class="popup-header">
+      <div class="logo">
+        <span class="logo-icon">📖</span>
+        <div>
+          <h1>PaperTranslator</h1>
+          <p class="subtitle">文献阅读翻译助手</p>
+        </div>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="enableToggle" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="quick-translate">
+      <textarea id="quickInput" placeholder="输入文本快速翻译...（单词/句子均可）" rows="3"></textarea>
+      <div class="quick-actions">
+        <select id="quickEngine">
+          <option value="google">Google 翻译（免费）</option>
+          <option value="deepl">DeepL</option>
+          <option value="openai">OpenAI</option>
+        </select>
+        <button id="quickBtn" class="btn-primary">翻译</button>
+      </div>
+      <div id="quickResult" class="quick-result" style="display:none;"></div>
+    </div>
+
+    <div class="stats">
+      <div class="stat-item">
+        <span class="stat-num" id="historyCount">0</span>
+        <span class="stat-label">翻译次数</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num" id="engineName">Google</span>
+        <span class="stat-label">当前引擎</span>
+      </div>
+    </div>
+
+    <div class="history-section">
+      <div class="section-header">
+        <span>最近翻译</span>
+        <button id="clearHistory" class="btn-text">清空</button>
+      </div>
+      <div id="historyList" class="history-list">
+        <div class="empty-history">暂无翻译记录</div>
+      </div>
+    </div>
+
+    <div class="popup-footer">
+      <button id="openOptions" class="btn-link">⚙️ 详细设置</button>
+      <a href="https://github.com" target="_blank" class="btn-link">GitHub</a>
+    </div>
+  </div>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

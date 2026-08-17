@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PaperTranslator 设置</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <header class="page-header">
+      <div class="header-left">
+        <span class="logo-icon">📖</span>
+        <div>
+          <h1>PaperTranslator</h1>
+          <p>文献阅读翻译助手 · 设置中心</p>
+        </div>
+      </div>
+      <div class="header-right">
+        <span class="version">v1.0.0</span>
+      </div>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab active" data-tab="general">通用设置</button>
+      <button class="tab" data-tab="engine">翻译引擎</button>
+      <button class="tab" data-tab="appearance">外观</button>
+      <button class="tab" data-tab="shortcut">快捷键</button>
+      <button class="tab" data-tab="about">关于</button>
+    </nav>
+
+    <!-- 通用设置 -->
+    <section class="tab-content active" id="tab-general">
+      <div class="card">
+        <h2>基础功能</h2>
+        <div class="form-group">
+          <label>
+            <input type="checkbox" id="enabled"> 启用划词翻译
+          </label>
+          <p class="hint">关闭后仅可通过快捷键或右键菜单翻译</p>
+        </div>
+        <div class="form-group">
+          <label>目标语言</label>
+          <select id="targetLang">
+            <option value="zh-CN">简体中文</option>
+            <option value="zh-TW">繁体中文</option>
+            <option value="en">英语</option>
+            <option value="ja">日语</option>
+            <option value="ko">韩语</option>
+            <option value="fr">法语</option>
+            <option value="de">德语</option>
+            <option value="es">西班牙语</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>触发方式</label>
+          <select id="triggerMode">
+            <option value="select">选中即翻译</option>
+            <option value="hotkey">仅快捷键触发</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>
+            <input type="checkbox" id="showPhonetic"> 单词显示音标
+          </label>
+        </div>
+        <div class="form-group">
+          <label>
+            <input type="checkbox" id="showDetail"> 显示详细释义
+          </label>
+        </div>
+        <div class="form-group">
+          <label>
+            <input type="checkbox" id="autoCopy"> 自动复制译文到剪贴板
+          </label>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>网站黑名单</h2>
+        <p class="hint">在以下网站不自动触发划词翻译（每行一个域名）</p>
+        <textarea id="blacklist" rows="4" placeholder="example.com&#10;mail.google.com"></textarea>
+      </div>
+    </section>
+
+    <!-- 翻译引擎 -->
+    <section class="tab-content" id="tab-engine">
+      <div class="card">
+        <h2>默认翻译引擎</h2>
+        <div class="engine-options">
+          <label class="engine-card">
+            <input type="radio" name="engine" value="google" checked>
+            <div class="engine-info">
+              <span class="engine-name">Google Translate</span>
+              <span class="engine-desc">免费、无需配置、支持多语言</span>
+              <span class="engine-tag free">免费</span>
+            </div>
+          </label>
+          <label class="engine-card">
+            <input type="radio" name="engine" value="deepl">
+            <div class="engine-info">
+              <span class="engine-name">DeepL</span>
+              <span class="engine-desc">翻译质量高，需要 API Key</span>
+              <span class="engine-tag">需配置</span>
+            </div>
+          </label>
+          <label class="engine-card">
+            <input type="radio" name="engine" value="openai">
+            <div class="engine-info">
+              <span class="engine-name">OpenAI / 兼容接口</span>
+              <span class="engine-desc">AI 翻译，支持自定义模型和端点</span>
+              <span class="engine-tag">需配置</span>
+            </div>
+          </label>
+        </div>
+        <p class="hint">单词翻译默认优先使用有道词典获取详细释义，不受此设置影响。</p>
+      </div>
+
+      <div class="card" id="deeplConfig">
+        <h2>DeepL 配置</h2>
+        <div class="form-group">
+          <label>API Key</label>
+          <input type="password" id="deeplApiKey" placeholder="输入 DeepL API Key">
+          <p class="hint">免费版 Key 以 :fx 结尾。在 <a href="https://www.deepl.com/pro-api" target="_blank">DeepL 官网</a> 申请。</p>
+        </div>
+      </div>
+
+      <div class="card" id="openaiConfig">
+        <h2>OpenAI 配置</h2>
+        <div class="form-group">
+          <label>API Key</label>
+          <input type="password" id="openaiApiKey" placeholder="输入 OpenAI API Key">
+        </div>
+        <div class="form-group">
+          <label>模型</label>
+          <input type="text" id="openaiModel" placeholder="gpt-4o-mini">
+          <p class="hint">支持 gpt-4o-mini、gpt-4o、gpt-3.5-turbo 等</p>
+        </div>
+        <div class="form-group">
+          <label>API 端点（Base URL）</label>
+          <input type="text" id="openaiBaseUrl" placeholder="https://api.openai.com/v1">
+          <p class="hint">可填入兼容 OpenAI 格式的第三方接口地址</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 外观 -->
+    <section class="tab-content" id="tab-appearance">
+      <div class="card">
+        <h2>主题与显示</h2>
+        <div class="form-group">
+          <label>气泡主题</label>
+          <select id="theme">
+            <option value="light">浅色</option>
+            <option value="dark">深色</option>
+            <option value="auto">跟随系统</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>气泡字号: <span id="fontSizeValue">14</span>px</label>
+          <input type="range" id="fontSize" min="12" max="20" value="14">
+        </div>
+      </div>
+    </section>
+
+    <!-- 快捷键 -->
+    <section class="tab-content" id="tab-shortcut">
+      <div class="card">
+        <h2>快捷键</h2>
+        <div class="shortcut-list">
+          <div class="shortcut-item">
+            <span class="shortcut-name">翻译选中文本</span>
+            <kbd>Alt</kbd> + <kbd>T</kbd>
+          </div>
+          <div class="shortcut-item">
+            <span class="shortcut-name">开启/关闭划词翻译</span>
+            <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd>
+          </div>
+        </div>
+        <p class="hint">如需修改快捷键，请前往浏览器扩展管理页面的快捷键设置。</p>
+        <button id="openShortcuts" class="btn-primary">打开快捷键设置</button>
+      </div>
+    </section>
+
+    <!-- 关于 -->
+    <section class="tab-content" id="tab-about">
+      <div class="card">
+        <h2>关于 PaperTranslator</h2>
+        <p class="about-text">
+          PaperTranslator 是一款专注于学术文献阅读的免费开源划词翻译浏览器插件。
+          智能识别单词与句子，单词查词典释义，句子整句翻译，支持 PDF 与学术网站。
+        </p>
+        <div class="about-links">
+          <a href="https://github.com" target="_blank">GitHub 仓库</a>
+          <a href="#" id="checkUpdate">检查更新</a>
+        </div>
+        <h3 style="margin-top:20px;">参考项目</h3>
+        <ul class="ref-list">
+          <li><a href="https://github.com/nextai-translator/nextai-translator" target="_blank">nextai-translator</a> - AI 划词翻译</li>
+          <li><a href="https://github.com/crimx/ext-saladict" target="_blank">沙拉查词 ext-saladict</a> - 全能划词词典</li>
+          <li><a href="https://github.com/FluentRead/FluentRead" target="_blank">FluentRead</a> - 双语阅读插件</li>
+        </ul>
+        <p class="license">本项目基于 MIT 协议开源，无广告、无隐私采集。</p>
+      </div>
+    </section>
+
+    <div class="save-bar">
+      <span id="saveStatus" class="save-status"></span>
+      <button id="resetBtn" class="btn-secondary">恢复默认</button>
+      <button id="saveBtn" class="btn-primary">保存设置</button>
+    </div>
+  </div>
+
+  <script type="module" src="options.js"></script>
+</body>
+</html>

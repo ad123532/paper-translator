@@ -1,0 +1,222 @@
+/* PaperTranslator - 内容脚本样式 */
+
+.paper-translator-bubble {
+  position: fixed;
+  z-index: 2147483647;
+  width: 360px;
+  max-width: 90vw;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.08);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 14px;
+  color: #1a1a1a;
+  overflow: hidden;
+  animation: pt-fade-in 0.18s ease-out;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.paper-translator-bubble[data-theme="dark"] {
+  background: #1e1e2e;
+  color: #e0e0e0;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+@keyframes pt-fade-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.pt-header {
+  display: flex;
+  align-items: center;
+  padding: 10px 14px;
+  background: linear-gradient(135deg, #4f6ef7 0%, #6c5ce7 100%);
+  color: #fff;
+  font-size: 13px;
+}
+
+.pt-title {
+  font-weight: 600;
+  flex: 1;
+}
+
+.pt-mode-tag {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  margin-right: 8px;
+}
+
+.pt-mode-tag.mode-word { background: rgba(255, 193, 7, 0.3); }
+.pt-mode-tag.mode-sentence { background: rgba(76, 175, 80, 0.3); }
+
+.pt-close {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0 4px;
+  line-height: 1;
+  opacity: 0.8;
+}
+.pt-close:hover { opacity: 1; }
+
+.pt-source {
+  padding: 8px 14px;
+  font-size: 12px;
+  color: #888;
+  background: #f8f9fa;
+  border-bottom: 1px solid #eee;
+  max-height: 60px;
+  overflow-y: auto;
+  word-break: break-word;
+  line-height: 1.5;
+}
+
+.paper-translator-bubble[data-theme="dark"] .pt-source {
+  background: #2a2a3e;
+  color: #999;
+  border-bottom-color: #333;
+}
+
+.pt-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  gap: 10px;
+  color: #888;
+}
+
+.pt-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #e0e0e0;
+  border-top-color: #4f6ef7;
+  border-radius: 50%;
+  animation: pt-spin 0.8s linear infinite;
+}
+
+@keyframes pt-spin { to { transform: rotate(360deg); } }
+
+.pt-result {
+  padding: 12px 14px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.pt-translation {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #1a1a1a;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.paper-translator-bubble[data-theme="dark"] .pt-translation { color: #e0e0e0; }
+
+.pt-phonetic {
+  margin-top: 8px;
+  color: #4f6ef7;
+  font-size: 13px;
+  font-style: italic;
+}
+
+.pt-explanations {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  font-size: 13px;
+  line-height: 1.8;
+  color: #444;
+}
+
+.paper-translator-bubble[data-theme="dark"] .pt-explanations { color: #ccc; }
+
+.pt-dict-pos {
+  margin-top: 8px;
+  font-weight: 600;
+  color: #6c5ce7;
+  font-size: 12px;
+}
+
+.pt-dict-terms {
+  font-size: 13px;
+  color: #555;
+  margin-top: 2px;
+}
+
+.pt-error {
+  color: #e74c3c;
+  padding: 12px;
+  text-align: center;
+}
+
+.pt-footer {
+  display: flex;
+  align-items: center;
+  padding: 8px 14px;
+  border-top: 1px solid #eee;
+  background: #fafafa;
+  gap: 8px;
+}
+
+.paper-translator-bubble[data-theme="dark"] .pt-footer {
+  background: #252538;
+  border-top-color: #333;
+}
+
+.pt-btn {
+  padding: 4px 12px;
+  font-size: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+  color: #555;
+  transition: all 0.15s;
+}
+
+.paper-translator-bubble[data-theme="dark"] .pt-btn {
+  background: #333;
+  border-color: #444;
+  color: #ccc;
+}
+
+.pt-btn:hover {
+  background: #4f6ef7;
+  color: #fff;
+  border-color: #4f6ef7;
+}
+
+.pt-engine {
+  margin-left: auto;
+  font-size: 11px;
+  color: #aaa;
+}
+
+/* Toast */
+.paper-translator-toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2147483647;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  animation: pt-fade-in 0.2s;
+}
+
+/* 滚动条美化 */
+.pt-result::-webkit-scrollbar,
+.pt-source::-webkit-scrollbar { width: 5px; }
+.pt-result::-webkit-scrollbar-thumb,
+.pt-source::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}

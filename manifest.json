@@ -1,0 +1,80 @@
+{
+  "manifest_version": 3,
+  "name": "PaperTranslator - 文献阅读翻译助手",
+  "version": "1.0.0",
+  "description": "专注学术文献阅读的划词翻译插件：选词译词、选句译句，支持PDF与多翻译引擎，免费开源无广告。",
+  "default_locale": "zh_CN",
+  "permissions": [
+    "storage",
+    "contextMenus",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://translate.googleapis.com/*",
+    "https://dict.youdao.com/*",
+    "https://api.deepl.com/*",
+    "https://api-free.deepl.com/*",
+    "https://api.openai.com/*",
+    "https://*.arxiv.org/*",
+    "https://*.nature.com/*",
+    "https://*.sciencedirect.com/*",
+    "https://*.springer.com/*",
+    "https://*.ieee.org/*",
+    "https://*.acm.org/*",
+    "https://*.wiley.com/*",
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "src/background/service-worker.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/content/content.js"],
+      "css": ["src/content/content.css"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+  "action": {
+    "default_popup": "src/popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_title": "PaperTranslator 文献翻译助手"
+  },
+  "options_ui": {
+    "page": "src/options/options.html",
+    "open_in_tab": true
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["src/lib/*", "icons/*"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "commands": {
+    "translate-selection": {
+      "suggested_key": {
+        "default": "Alt+T",
+        "mac": "Alt+T"
+      },
+      "description": "翻译当前选中文本"
+    },
+    "toggle-extension": {
+      "suggested_key": {
+        "default": "Alt+Shift+T",
+        "mac": "Alt+Shift+T"
+      },
+      "description": "开启/关闭划词翻译"
+    }
+  }
+}
